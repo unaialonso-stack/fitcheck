@@ -1,0 +1,315 @@
+/* CONFIGURACIÓN GLOBAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0e0e0e; /* color negro elegante */
+    color: white;
+    line-height: 1.6;
+}
+
+/* LINKS */
+a{
+    color: white;
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.8;
+}
+
+/* Header y Navbar */
+header{
+    background: #111;
+    padding: 20px 0;
+    border-bottom: 2px solid #e50000; /* color rojo fuerte */
+}
+
+nav{
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1{
+    color: #e50000;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+nav ul li a{
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+nav ul li a:hover{
+    background: #e50000;
+    transition: 0.3s;
+}
+
+/* HERO */
+#hero{
+    text-align: center;
+    padding: 120px 20px;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url(/img/barra.png); 
+    background-size: cover;
+    background-position:  center;
+    min-height: 30vh;
+}
+
+#hero h2{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+#hero p{
+    font-size: 18px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-principal{
+    display: inline-block;
+    background: #e50000;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-principal:hover{
+    background: #ff2222;
+}
+
+/* VENTAJAS */
+#ventajas{
+    width: 80%;
+    max-width: 1200px;
+    margin: 60px auto;
+    text-align: center;
+}
+#ventajas h3{
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #e50000;
+}
+
+.beneficios{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.beneficios article{
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.beneficios h4{
+    color: #e50000;
+    margin-bottom: 10px;
+}
+
+/* CALL TO ACTION */
+#cta-final{
+    text-align: center;
+    padding: 60px 20px;
+    background: #111;
+}
+.btn-secundario{
+    display: inline-block;
+    background: transparent;
+    border: 2px solid #e50000;
+    color: #e50000;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+.btn-secundario:hover{
+    background: #e50000;
+    color:rgb(30, 30, 30);
+}
+
+/* FORMULARIOS (LOGIN Y REGISTRO) */
+#login, #registro{
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+.form-box{
+    background: #1a1a1a;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    width: 90%;
+    max-width: 400%;
+    margin-top: 60px;
+}
+
+#login h2, #registro h2{
+    margin-bottom: 20px;
+    color: #e50000;
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+form label{
+    font-size: 14px;
+    opacity: 0.9;
+}
+form input{
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background: #0f0f0f;
+    color: white;
+    border: 1px solid #333;
+}
+form input:focus{
+    border-color: #e50000;
+}
+
+/* BOTÓN LOGIN Y REGISTRO */
+form button{
+    background: #e50000;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+form button:hover{
+    background: #ff2222;
+}
+/* Texto bajo el formulario del Login */
+#login p{
+    margin-top: 15px;
+    text-align: center;
+}
+#login p a{
+    color: #e50000;
+}
+#login p a:hover{
+    opacity: 0.8;
+}
+
+/* HEADER DE LOGIN Y REGISTRO */
+.header-simple{
+    background: #111;
+    padding: 10px 0;
+    border-bottom: 1px solid #e50000;
+}
+.nav-simple{
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-simple h1{
+    color: #e50000;
+    font-size: 22px;
+    font-weight: bold;
+}
+.btn-volver{
+    color: white;
+    background: #e50000;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-volver:hover{
+    background: #ff2222;
+}
+
+/* FORMULARIO (CONTACTO) */
+#contacto{
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 70vh;
+}
+#contacto h2{
+    text-align: center;
+    margin-bottom: 10px;
+    color: #e50000;
+}
+#contacto p{
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0,9;
+}
+#contacto label{
+    font-size: 15px;
+    margin-top: 10px;
+}
+#contacto input,
+#contacto textarea{
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #0f0f0f;
+    color: white;
+    margin-top: 5px;
+}
+#contacto button{
+    background: #e50000;
+    padding: 12px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+#contacto button:hover{
+    background: #ff2222;
+}
+
+/* FOOTER */
+footer{
+    background: #0b0b0b;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #e50000;
+    margin-top: 40px;
+}
