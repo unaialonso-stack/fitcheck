@@ -15,18 +15,42 @@
                 <li><a href="inicio.html">Inicio</a></li>
                 <li><a href="rutinas.html">Rutinas</a></li>
                 <li><a href="progreso.html">Progreso</a></li>
-                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="perfil.html" class="active">Perfil</a></li>
             </ul>
         </nav>
     </header>
-    <main>
+    <main id="perfil">
         <h2>Perfil</h2>
-        <p>Datos personales y obteivo físico</p>
-        <!-- Para poner aquí: si es la primera vez, rellenar la información: edad, objetivo (defi, volumen, mant.), altura, peso actual y actividad semanal. También objetivo físico.
-         después: si ya está puesto, tener la info plasmada en la pantalla y un botón para editar por si acaso.-->
-        <h2>Calorías recomendadas</h2>
-        <p>Aquí se te ha generado la antidad de kcal que se reomienda alcanzar diariamente para ese objetivo físico:</p>
-        <!-- Crear un generador calculando con la información dada antes.-->
+        <p class="descripcion">Tu información personal y tu objetivo físico</p>
+        
+        <div class="perfil-box">
+
+            <!-- Información Personal -->
+            <section class="info-section">
+                <h3>Información personal</h3>
+                <ul>
+                    <li><strong>Nombre:</strong> -</li>
+                    <li><strong>Edad:</strong> -</li>
+                    <li><strong>Altura:</strong> -</li>
+                    <li><strong>Peso actual:</strong> -</li>
+                    <li><strong>Actividad semanal:</strong> -</li>
+                </ul>
+                <button class="btn-editar">Editar información</button>
+            </section>
+
+            <!-- Objetivo -->
+             <section class="info-section">
+                <h3>Objetivo físico</h3>
+                <p>Aquí aparecerá tu objetivo: Definición, Volumen o Mantenimiento.</p>
+             </section>
+             
+            <!-- Calorías -->
+             <section class="info-section">
+                <h3>Calorías recomendadas</h3>
+                <p>Se mostrará aquí una vez completes la información inicial.</p>
+                <!-- Más adelante construir esto dinámicamente con calculador automático -->
+             </section>
+        </div>
     </main>
 
     <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>

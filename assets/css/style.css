@@ -214,7 +214,7 @@ form button{
 form button:hover{
     background: #ff2222;
 }
-/* Texto bajo el formulario del Login */
+/* Texto bajo el formulario del Login y del Registro */
 #login p{
     margin-top: 15px;
     text-align: center;
@@ -223,6 +223,16 @@ form button:hover{
     color: #e50000;
 }
 #login p a:hover{
+    opacity: 0.8;
+}
+#registro p{
+    margin-top: 15px;
+    text-align: center;
+}
+#registro p a{
+    color: #e50000;
+}
+#registro p a:hover{
     opacity: 0.8;
 }
 
@@ -305,6 +315,245 @@ form button:hover{
     background: #ff2222;
 }
 
+/* PERFIL */
+#perfil{
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
+}
+#perfil h2{
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #e50000;
+}
+#perfil .descripcion{
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+/* BOX DEL PERFIL */
+.perfil-box{
+    background: #111;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+/* SECCIONES */
+.info-section{
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #2a2a2a;
+    text-align: left;
+}
+.info-section h3{
+    color: #e50000;
+    margin-bottom: 10px;
+}
+/* LISTA DE DATOS */
+.info-section ul{
+    list-style: none;
+    line-height: 1.9;
+    margin-bottom: 15px;
+}
+.info-section ul li strong{
+    color: #e50000;
+}
+/* BOTÓN EDITAR */
+.btn-editar{
+    background: #e50000;
+    padding: 10px 18px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.btn-editar:hover{
+    background: #ff2222;
+}
+/* NAVBAR */
+nav ul li a.active{
+    background: #e50000;
+    border-radius: 6px;
+}
+
+/* RUTINAS */
+#rutinas{
+    width: 80%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+#rutinas h2{
+    color: #e50000;
+    margin-bottom: 5px;
+}
+#rutinas p{
+    opacity: 0.9;
+}
+.rutinas-titulo{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.btn-crear-rutinas{
+    margin-top: 20px;
+}
+/* LISTADO DE RUTINAS */
+.lista-rutinas{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+.rutina-card{
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.rutina-card h3{
+    color: #e50000;
+    margin-bottom: 8px;
+}
+.rutina-card p{
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+.rutina-acciones{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.btn-eliminar{
+    background: #b30000;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.btn-eliminar:hover{
+    background: #ff2222;
+}
+/* CUANDO NO EXISTEN RUTINAS */
+.sin-rutinas{
+    text-align: center;
+    font-size: 18px;
+    opacity: 0.7;
+    margin-top: 40px;
+}
+
+/* PROGRESO */
+#progreso{
+    width: 85%;
+    max-width: 1100px;
+    margin: 40px auto;
+}
+.progreso-header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+#progreso h2{
+    color: #e50000;
+    margin-bottom: 10px;
+}
+/* FORMULARIO PARA NUEVO PESO */
+.progreso-formulario{
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    margin-bottom: 40px;
+}
+.progreso-formulario h3{
+    color: #e50000;
+    margin-bottom: 15px;
+}
+.progreso-formulario form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.progreso-formulario input{
+    background: #0f0f0f;
+    border: 1px solid #333;
+    padding: 12px;
+    border-radius: 6px;
+    color: white;
+}
+.progreso-formulario button{
+    background: #e50000;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.progreso-formulario button:hover{
+    background: #ff2222;
+}
+/* TABLA DE PROGRESO */
+.tabla-progreso{
+    margin-top: 40px;
+}
+.tabla-progreso h3{
+    color: #e50000;
+    margin-bottom: 15px;
+}
+.tabla-progreso table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+.tabla-progreso th,
+.tabla-progreso td{
+    padding: 12px;
+    text-align: center;
+}
+.tabla-progreso th{
+    background: #111;
+    color: #e50000;
+    font-weight: bold;
+}
+.tabla-progreso tr:nth-child(even){
+    background: #151515;
+}
+.tabla-progreso tr:nth-child(odd){
+    background: #1d1d1d;
+}
+.sin-datos{
+    opacity: 0.7;
+    text-align: center;
+}
+/* GRÁFICA */
+.grafica-progreso{
+    margin-top: 50px;
+    padding: 25px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+.grafica-progreso h3{
+    color: #e50000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+canvas{
+    width: 100% !important;
+    max-height: 350px;
+}
 /* FOOTER */
 footer{
     background: #0b0b0b;

@@ -14,16 +14,68 @@
             <ul>
                 <li><a href="inicio.html">Inicio</a></li>
                 <li><a href="rutinas.html">Rutinas</a></li>
-                <li><a href="progreso.html">Progreso</a></li>
+                <li><a href="progreso.html" class="active">Progreso</a></li>
                 <li><a href="perfil.html">Perfil</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <h2>Progreso</h2>
-        <p>Regstra tu peso cuando quieras y verás el progreso en la gráfica.</p>
-        <!-- Aquí, de alguna manera, colocar para ir apuntando el progreso -->
-        <!-- También integrar Chart.js -->
+    <main id="progreso">
+        <div class="progreso-header">
+            <h2>Progreso</h2>
+            <p>Registra tu peso siempre que quieras y observa tu evolución.</p>
+        </div>
+
+        <!-- Formulario para registrar peso -->
+         <section class="progreso-formulario">
+            <h3>Registrar nuevo peso</h3>
+            <form>
+                <label for="peso">Peso actual (kg)</label>
+                <input type="number" id="peso" name="peso" step="0.1" required>
+                
+                <label for="fecha">Fecha</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <button type="submit">Guardar</button>
+            </form>
+         </section>
+
+         <!-- Tabla de registros -->
+          <section class="tabla-progreso">
+                <h3>Historial de registros</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Peso (kg)</th>
+                            <th>Fecha</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>72.5</td>
+                            <td>2025-02-20</td>
+                        </tr>
+                        <tr>
+                            <td>72.0</td>
+                            <td>2025-02-15</td>
+                        </tr>
+                        <!-- Cuando no haya registros -->
+                        <!--
+                        <tr><td colspan="2" class="sin-datos">Aún no has registrado peso.</td></tr>
+                        -->
+                    </tbody>
+                </table>
+          </section>
+
+          <!-- Gráfico -->
+           <section class="grafica-progreso">
+                <h3>Gráfica de evolución</h3>
+                <canvas id="graficaPeso"></canvas>
+           </section>
+           <!--
+            Aquí hará falta un futuro script para Chart.js
+           -->
+        
     </main>
     
     <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>
