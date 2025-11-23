@@ -5,28 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - FitCheck</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="img/logo2.png">
 </head>
 <body>
     
     <!-- Header -->
      <header>
-        <nav>
+        <nav class="nav-con-menu">
             <h1>FitCheck</h1>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="inicio.html">Inicio</a></li>
                 <li><a href="rutinas.html">Rutinas</a></li>
                 <li><a href="progreso.html">Progreso</a></li>
                 <li><a href="perfil.html">Perfil</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="index.html">Cerrar sesión</a></li>
             </ul>
+            <!-- Incóno para desplegable -->
+             <div id="menu-btn" class="menu-btn">☰</div>
+             <!-- Desplegable -->
+             <div id="menu-desplegable" class="menu-desplegable">
+                <a href="#" id="logout-btn">Cerrar sesión</a>
+                <a href="#" id="delete-account-btn" class="danger">Eliminar cuenta</a>
+            </div>
         </nav>
      </header>
 
      <main>
-        <section id="hero">
+        <section id="hero2">
             <h2>¡Bienvenido/a de nuevo!</h2>
             <p>Como siempre, podrás acceder a cualquiera de las secciones que necesites</p>
+            <p>Hola, <strong id="dashboard-name">Usuario</strong></p>
         </section>
          <!-- Sección de ventajas-->
      <section id="ventajas">
@@ -49,5 +57,7 @@
      </main>
 
     <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

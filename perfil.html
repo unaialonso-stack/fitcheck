@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil - FitCheck</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="img/logo2.png">
 </head>
 <body>
     <!-- Header -->
@@ -28,31 +29,69 @@
             <!-- Información Personal -->
             <section class="info-section">
                 <h3>Información personal</h3>
-                <ul>
-                    <li><strong>Nombre:</strong> -</li>
-                    <li><strong>Edad:</strong> -</li>
-                    <li><strong>Altura:</strong> -</li>
-                    <li><strong>Peso actual:</strong> -</li>
-                    <li><strong>Actividad semanal:</strong> -</li>
+                <ul id="info-personal-list">
+                    <li><strong>Nombre: </strong><span id="p-nombre">-</span></li>
+                    <li><strong>Género: </strong><span id="p-genero">-</span></li>
+                    <li><strong>Edad: </strong><span id="p-edad">-</span></li>
+                    <li><strong>Altura: </strong><span id="p-altura">-</span></li>
+                    <li><strong>Peso actual: </strong><span id="p-peso">-</span></li>
+                    <li><strong>Actividad semanal: </strong><span id="p-actividad">-</span></li>
                 </ul>
-                <button class="btn-editar">Editar información</button>
+                <button class="btn-editar" id="btn-editar-info">Editar información</button>
+                
+                <!-- Formulario oculto -->
+                 <form id="form-info" class="hidden">
+                    <label>Edad: <input type="number" name="edad" min="10"></label>
+                    <label>Género:
+                        <select name="genero">
+                        <option value="hombre">Hombre</option>
+                        <option value="mujer">Mujer</option>
+                        <option value="otro">Otro / Prefiero no decir</option>
+                        </select>
+                    </label>
+                    <label>Altura (cm): <input type="number" name="altura" min="100"></label>
+                    <label>Peso (kg): <input type="number" name="peso" min="30"></label>
+                 
+                    <label>Actividad semanal:
+                        <select name="actividad">
+                            <option value="1.2">Sedentario</option>
+                            <option value="1.375">Ligero (1-3 días/sem)</option>
+                            <option value="1.55">Moderado (3-5 días/sem)</option>
+                            <option value="1.725">Intenso (6 días/sem)</option>
+                            <option value="1.9">Atleta (2 entrenamientos/día)</option>
+                        </select>
+                    </label>
+                    <button type="submit" class="btn-guardar">Guardar</button>
+                </form>
             </section>
 
             <!-- Objetivo -->
              <section class="info-section">
                 <h3>Objetivo físico</h3>
                 <p>Aquí aparecerá tu objetivo: Definición, Volumen o Mantenimiento.</p>
+                <p id="objetivo-label">Sin objetivo seleccionado.</p>
+
+                <select id="objetivo-select">
+                    <option value="">Seleccionar objetivo...</option>
+                    <option value="definicion">Definición</option>
+                    <option value="volumen">Volumen</option>
+                    <option value="mantenimiento">Mantenimiento</option>
+                </select>
+
+                <button id="guardar-objetivo" class="btn-guardar">Guardar</button>
              </section>
              
             <!-- Calorías -->
              <section class="info-section">
                 <h3>Calorías recomendadas</h3>
-                <p>Se mostrará aquí una vez completes la información inicial.</p>
-                <!-- Más adelante construir esto dinámicamente con calculador automático -->
+                <p id="calorias-res">Completa tu información y objetivos.</p>
+                <button id="btn-calcular" class="btn-secundario">Calcular calorías</button>
              </section>
         </div>
     </main>
 
     <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

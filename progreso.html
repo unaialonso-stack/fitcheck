@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progreso - FitCheck</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="img/logo2.png">
 </head>
 <body>
     <!-- Header -->
@@ -28,7 +29,7 @@
         <!-- Formulario para registrar peso -->
          <section class="progreso-formulario">
             <h3>Registrar nuevo peso</h3>
-            <form>
+            <form id="form-progreso">
                 <label for="peso">Peso actual (kg)</label>
                 <input type="number" id="peso" name="peso" step="0.1" required>
                 
@@ -50,15 +51,7 @@
                             <th>Fecha</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>72.5</td>
-                            <td>2025-02-20</td>
-                        </tr>
-                        <tr>
-                            <td>72.0</td>
-                            <td>2025-02-15</td>
-                        </tr>
+                    <tbody id="tbody-progreso">
                         <!-- Cuando no haya registros -->
                         <!--
                         <tr><td colspan="2" class="sin-datos">Aún no has registrado peso.</td></tr>
@@ -79,5 +72,7 @@
     </main>
     
     <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
