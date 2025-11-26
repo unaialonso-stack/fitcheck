@@ -20,39 +20,156 @@
             </ul>
         </nav>
     </header>
+
         <main id="rutinas">
             <div class="rutinas-titulo">
                 <h2>Mis Rutinas</h2>
                 <p>Aquí podrás ver, crear, editar o eliminar tus rutinas.</p>
-                 <button class="btn-principal btn-crear-rutinas">+ Crear nueva rutina</button>
+                 <button id="btn-abrir-crear" class="btn-principal btn-abrir-crear">+ Crear nueva rutina</button>
             </div>
 
             <!-- Tabla de rutinas -->
              <section class="lista-rutinas" id="lista-rutinas">
-                <article class="rutina-card">
-                    <h3>Rutina de Pecho</h3>
-                    <p>Última modificación: 20/10/2025</p>
-                    <div class="rutina-acciones">
-                        <button class="btn-secundario">Ver</button>
-                        <button class="btn-secundario">Editar</button>
-                        <button class="btn-eliminar">Eliminar</button>
-                    </div>
-                </article>
-                <article class="rutina-card">
-                    <h3>Rutina de Piernasa</h3>
-                    <p>Última modificación: 18/11/2025</p>
-                    <div class="rutina-acciones">
-                        <button class="btn-secundario">Ver</button>
-                        <button class="btn-secundario">Editar</button>
-                        <button class="btn-eliminar">Eliminar</button>
-                    </div>
-                </article>
-                <!-- Cuando no existan rutinas -->
-                <!--
-                <p class="sin-rutinas">Aún no has creado ninguna rutina.</p>
-                -->
              </section>
         </main>
+
+        <!-- Crear rutina -->
+         <div id="modal-crear" class="modal hidden">
+            <div class="modal-content">
+                <h2>Crear nueva rutina</h2>
+
+                <label>Nombre de la rutina</label>
+                <input id="rutina-nombre" type="text">
+
+                <label>Día (opcional)</label>
+                <select id="rutina-dia">
+                    <option value=""></option>
+                    <option>Lunes</option>
+                    <option>Martes</option>
+                    <option>Miércoles</option>
+                    <option>Jueves</option>
+                    <option>Viernes</option>
+                    <option>Sábado</option>
+                    <option>Domingo</option>
+                </select>
+
+                <label>Grupo/s muscular/es</label>
+                <div class="grupo-multiple" id="grupo-crear">
+                    <label><input type="checkbox" value="Pecho"> Pecho</label>
+                    <label><input type="checkbox" value="Espalda"> Espalda</label>
+                    <label><input type="checkbox" value="Pierna"> Pierna</label>
+                    <label><input type="checkbox" value="Hombro"> Hombro</label>
+                    <label><input type="checkbox" value="Bíceps"> Bíceps</label>
+                    <label><input type="checkbox" value="Tríceps"> Tríceps</label>
+                    <label><input type="checkbox" value="Full Body"> Full Body</label>
+                    <label><input type="checkbox" value="ABS"> ABS</label>
+                </div>
+
+                <button id="btn-crear-rutina" class="btn-principal">Siguiente</button>
+                <button id="cerrar-modal-crear" class="btn-secundario">Cancelar</button>
+            </div>
+         </div>
+
+         <!-- Modal editar rutina -->
+          <div id="modal-editar" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="titulo-crear">Editar rutina</h2>
+
+                <label>Nombre</label>
+                <input id="edit-nombre" type="text">
+
+                <label>Día</label>
+                <select id="edit-dia">
+                    <option value=""></option>
+                    <option>Lunes</option>
+                    <option>Martes</option>
+                    <option>Miércoles</option>
+                    <option>Jueves</option>
+                    <option>Viernes</option>
+                    <option>Sábado</option>
+                    <option>Domingo</option>
+                </select>
+                
+
+                <label>Grupo/s muscular/es</label>
+                <div class="grupo-multiple" id="grupo-editar">
+                    <label><input type="checkbox" value="Pecho"> Pecho</label>
+                    <label><input type="checkbox" value="Espalda"> Espalda</label>
+                    <label><input type="checkbox" value="Pierna"> Pierna</label>
+                    <label><input type="checkbox" value="Hombro"> Hombro</label>
+                    <label><input type="checkbox" value="Bíceps"> Bíceps</label>
+                    <label><input type="checkbox" value="Tríceps"> Tríceps</label>
+                    <label><input type="checkbox" value="Full Body"> Full Body</label>
+                    <label><input type="checkbox" value="ABS"> ABS</label>
+                </div>
+                
+                <h3>Ejercicios</h3>
+                <div id="lista-ejercicios-edit"></div>
+
+                <button id="btn-agregar-ejercicio" class="btn-principal">+ Agregar ejercicio</button>
+                <button id="btn-guardar-cambios" class="btn-secundario">Guardar cambios</button>
+                <button id="cerrar-modal-editar" class="btn-eliminar">Cerrar</button>
+            </div>
+          </div>
+
+          <div id="modal-ejercicios" class="modal hidden">
+            <div class="modal-contenido">
+                <div class="cerrar-x" id="cerrar-ejercicios-x">✖</div>
+                
+                <h3>Selecciona un ejercicio</h3>
+                <p class="modal-desc">Elige uno de los disponibles para este grupo muscular.</p>
+
+                <div class="ejercicios-grid" id="ejercicios-grid">
+                    
+                </div>
+                <button id="btn-cerrar-modal" class="btn-secundario" style="margin-top:20px;">
+                    Cerrar
+                </button>
+            </div>
+          </div>
+
+          <div id="modal-ver" class="modal hidden">
+            <div class="modal-contenido">
+                <div class="cerrar-x" id="cerrar-ver-x">✖</div>
+
+                <h3 id="ver-titulo"></h3>
+                <p id="ver-dia"></p>
+                <p id="ver-grupo"></p>
+
+                <h4 style="margin-top: 15px;">Ejercicios:</h4>
+                <div id="ver-lista"></div>
+            </div> 
+          </div>
+
+          <div id="modal-detalles-ejercicio" class="modal hidden">
+            <div class="modal-contenido small">
+                <h3>Detalles el ejercicio</h3>
+
+                <p id="ejercicio-seleccionado" style="margin-bottom: 10px;"></p>
+
+                <label>Series</label>
+                <input id="input-series" type="number" min="1">
+
+                <label>Repeticiones</label>
+                <input id="input-reps" type="number" min="1">
+
+                <label>Peso (opcional)</label>
+                <input id="input-peso" type="number" min="0">
+
+                <button id="guardar-ejercicio" class="btn-principal">Guardar</button>
+                <button id="cerrar-detalles" class="btn-secundario">Cancelar</button>
+            </div>
+          </div>
+
+          <div id="modal-img" class="modal hidden">
+            <div class="modal-contenido small">
+                <span id="cerrar-img" class="cerrar-x">✖</span>
+                <img id="img-view" style="width:100%;border-radius:10px;">
+            </div>
+          </div>
+
+          <!-- Alerta personalizada -->
+           <div id="alerta" class="alerta hidden"></div>
         
      <footer><p>© 2025 FitCheck | Tu gimnasio digital</p></footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
