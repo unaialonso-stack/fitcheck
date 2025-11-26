@@ -325,31 +325,31 @@ const saveRutinas = arr => localStorage.setItem(rutinasKey(), JSON.stringify(arr
 /* Datos de ejercicios por grupo (ejemplo) */
 const ejerciciosPorGrupo = {
     Pecho: [
-        { nombre: "Press banca", img: "img/press-banca.png" },
-        { nombre: "Aperturas con mancuernas", img: "img/aperturas.jpg" },
+        { nombre: "Press banca", img: "img/pecho/press-banca.jpg" },
+        { nombre: "Aperturas con mancuernas", img: "img/pecho/apertura-mancuernas.png" },
     ],
     Espalda: [
-        { nombre: "Polea al pecho", img: "img/polea-al-pecho.png" },
-        { nombre: "Remo con mancuerna", img: "img/remo-mancuerna.jpg" },
+        { nombre: "Polea al pecho", img: "img/espalda/polea-al-pecho.png" },
+        { nombre: "Remo con mancuerna", img: "img/espalda/remo-mancuerna.jpg" },
     ],
     Pierna: [
-        { nombre: "Sentadilla", img: "img/sentadilla.png" },
-        { nombre: "Prensa", img: "img/prensa.png" },
+        { nombre: "Sentadilla", img: "img/pierna/sentadilla.jpg" },
+        { nombre: "Prensa", img: "img/pierna/prensa.png" },
     ],
     Hombro: [
-        { nombre: "Press militar", img: "img/press-militar.png" },
+        { nombre: "Press militar", img: "img/hombro/press-militar.png" },
     ],
     "Bíceps": [
-        { nombre: "Curl con barra", img: "img/curl-barra.png" }
+        { nombre: "Curl con barra", img: "img/biceps/curl-barra.jpg" }
     ],
     "Tríceps": [
-        { nombre: "Fondos", img: "img/fondos.png" }
+        { nombre: "Fondos", img: "img/triceps/fondos.jpg" }
     ],
     "Full Body": [
-        { nombre: "Burpees", img: "img/burpees.png" }
+        
     ],
     "ABS": [
-        { nombre: "Plancha", img: "img/plancha.png" }
+        { nombre: "Plancha", img: "img/abs/plancha.jpg" }
     ]
 };
 /*** Estado temporal / helpers globales para agregar ejercicios ***/
