@@ -25,7 +25,7 @@
             const users = readUsers();
             if(users.find(u => u.email === email)) { alert('Usuario ya existente'); return;}
 
-            //Guardad datos básicos
+            /*Guardad datos básicos*/
             users.push({nombre, edad, email, password, perfil: { altura: null, peso: null, actividad: null, objetivo:null}});
             saveUsers(users);
             setLogged(email);
@@ -312,8 +312,7 @@ if(currentPage === 'perfil.html'){
        caloriasRes.textContent = `Calorías recomendadas: ${Math.round(TDEE)} kcal/día`;
     });
     };
-    /* CRUD con LocalStorage */
-    // Estructura en localStorage: routines_{email} => array de {id, nombre, dia, grupo, ejercicios: [{nombre, series, reps}], updated}
+    
    /* CRUD con LocalStorage */
 const rutinasKey = () => {
     const email = getLogged();
@@ -354,9 +353,9 @@ const ejerciciosPorGrupo = {
     ]
 };
 /*** Estado temporal / helpers globales para agregar ejercicios ***/
-let ejercicioTemp = null;        // nombre del ejercicio seleccionado temporalmente
-let ejercicioTempImg = "";       // src de la imagen del ejercicio temporal
-let rutinaActualId = null;       // id de la rutina en la que estamos añadiendo ejercicios (crear o editar)
+let ejercicioTemp = null;        
+let ejercicioTempImg = "";       
+let rutinaActualId = null;       
 
 /* Busca imagen por nombre recorriendo todos los grupos */
 function buscarImagenEjercicio(nombre) {
@@ -442,7 +441,6 @@ const modalEditar = document.querySelector("#modal-editar");
 
 /* Abrir / cerrar crear */
 if (btnAbrirCrear) btnAbrirCrear.onclick = () => {
-    // limpiar inputs
     const nombreInput = document.getElementById("rutina-nombre");
     if (nombreInput) nombreInput.value = "";
     document.querySelectorAll("#grupo-crear input").forEach(i => i.checked = false);
@@ -450,12 +448,11 @@ if (btnAbrirCrear) btnAbrirCrear.onclick = () => {
 };
 if (btnCerrarCrear) btnCerrarCrear.onclick = () => modalCrear.classList.add("hidden");
 
-/* Crear rutina -> abrir modal ejercicios para el/los grupos seleccionados */
 document.querySelector("#btn-crear-rutina").onclick = () => {
     const nombre = document.querySelector("#rutina-nombre").value.trim();
     const dia = document.querySelector("#rutina-dia").value.trim();
 
-    // leer checkboxes (grupo-crear)
+    /* leer checkboxes */
     const gruposNode = document.querySelectorAll("#grupo-crear input:checked");
     const grupos = Array.from(gruposNode).map(c => c.value);
 
@@ -465,7 +462,7 @@ document.querySelector("#btn-crear-rutina").onclick = () => {
         id: Date.now().toString(36),
         nombre,
         dia,
-        grupo: grupos, // guardamos array
+        grupo: grupos, 
         ejercicios: [],
         updated: new Date().toISOString().split("T")[0]
     };
@@ -474,10 +471,8 @@ document.querySelector("#btn-crear-rutina").onclick = () => {
     arr.push(nueva);
     saveRutinas(arr);
 
-    // cerrar crear modal
     modalCrear.classList.add("hidden");
 
-    // Abrir modal de ejercicios mostrando ejercicios combinados de los grupos seleccionados
     modalEjercicios.dataset.rutinaid = nueva.id;
     cargarEjerciciosGrupos(grupos);
     modalEjercicios.classList.remove("hidden");
@@ -489,10 +484,8 @@ document.querySelector("#btn-crear-rutina").onclick = () => {
 function cargarEjerciciosGrupos(grupos) {
     gridEjercicios.innerHTML = "";
 
-    // grupos puede ser array o string
     const gruposArray = Array.isArray(grupos) ? grupos : [grupos];
 
-    // juntar ejercicios (sin duplicados por nombre)
     const vistos = new Set();
     const lista = [];
 
@@ -515,7 +508,6 @@ function cargarEjerciciosGrupos(grupos) {
     lista.forEach(e => {
         const div = document.createElement("div");
         div.className = "ejercicio-card";
-        // usa data-ejercicio (coherente)
         div.dataset.ejercicio = e.nombre;
 
         div.innerHTML = `
@@ -526,13 +518,11 @@ function cargarEjerciciosGrupos(grupos) {
         gridEjercicios.appendChild(div);
     });
 
-    // bind a los botones recién creados
     bindAgregarEjerciciosDesdeModal();
 }
 
-/* Bind: cuando pulsas "Agregar" en modal-ejercicios */
+/* Cuando pulsas "Agregar" en modal-ejercicios */
 function bindAgregarEjerciciosDesdeModal() {
-    // Para cada botón "Agregar" en el grid, abrimos el modal-detalles
     gridEjercicios.querySelectorAll(".ejercicio-card .btn-card").forEach(btn => {
         btn.onclick = (ev) => {
             ev.stopPropagation();
@@ -541,21 +531,16 @@ function bindAgregarEjerciciosDesdeModal() {
             const imgEl = card.querySelector("img");
             const imgSrc = imgEl ? imgEl.src : buscarImagenEjercicio(nombre) || "";
 
-            // Guardamos temporalmente y establecemos la rutina destino (desde modalEjercicios.dataset)
             ejercicioTemp = nombre;
             ejercicioTempImg = imgSrc;
             rutinaActualId = modalEjercicios.dataset.rutinaid || modalEditar.dataset.id || null;
 
-            // Poblamos el modal-detalles y lo mostramos
             const txt = document.getElementById("ejercicio-seleccionado");
             if (txt) txt.textContent = ejercicioTemp;
 
-            // Abrir modal de detalles (no cerramos modal-ejercicios automáticamente,
-            // para permitir agregar más de uno seguido si así lo quieres)
             const modalDetalles = document.getElementById("modal-detalles-ejercicio");
             if (modalDetalles) modalDetalles.classList.remove("hidden");
 
-            // Focus en input-series para usabilidad
             const inputS = document.getElementById("input-series");
             if (inputS) inputS.focus();
         };
@@ -571,7 +556,7 @@ if (cerrarEjerciciosX) cerrarEjerciciosX.onclick = () => {
     modalEjercicios.classList.add("hidden");
 }
 
-/* Ver rutina -> usa tu modal bonito */
+/* Ver rutina */
 function verRutina(id) {
     const r = readRutinas().find(x => x.id === id);
     if (!r) return;
@@ -595,7 +580,6 @@ function verRutina(id) {
             const series = e.series || 0;
             const reps = e.reps || 0;
             const peso = e.peso || (e.peso === 0 ? 0 : "");
-            // si el ejercicio tiene img guardada la usamos; si no, buscamos globalmente
             const imgSrc = e.img || buscarImagenEjercicio(e.nombre) || "";
 
             p.innerHTML = `
@@ -611,7 +595,6 @@ function verRutina(id) {
             cont.appendChild(p);
         });
 
-        // añadir comportamiento a botones "Ver imagen" (si hay)
         cont.querySelectorAll(".btn-ver-img").forEach(btn => {
     btn.onclick = () => {
         const src = btn.dataset.img;
@@ -622,7 +605,7 @@ function verRutina(id) {
     };
 });
 
-// cerrar modal imagen
+/* cerrar modal imagen */
 document.getElementById("cerrar-img").onclick = () =>
     document.getElementById("modal-img").classList.add("hidden");
     }
@@ -645,11 +628,9 @@ function abrirEditar(id) {
     rutinaActualId = id;
 
     document.querySelector("#edit-nombre").value = rutina.nombre || "";
-    // poner select de día si existe
     const editDia = document.querySelector("#edit-dia");
     if (editDia) editDia.value = rutina.dia || "";
 
-    // poblar checkboxes del edit (grupo-editar)
     document.querySelectorAll("#grupo-editar input").forEach(inp => {
         inp.checked = Array.isArray(rutina.grupo) ? rutina.grupo.includes(inp.value) : (rutina.grupo === inp.value);
     });
@@ -676,7 +657,7 @@ function renderEjerciciosEdit(rutina) {
         cont.appendChild(div);
     });
 
-    // Borrar ejercicio
+    /* Borrar ejercicio */
     cont.querySelectorAll(".btn-del-ej").forEach(btn => {
         btn.onclick = () => {
             const index = Number(btn.dataset.i);
@@ -692,26 +673,24 @@ function saveEjerciciosCambio(rutina) {
     renderEjerciciosEdit(rutina);
 }
 
-/* Agregar ejercicio desde EDIT (prompt) */
+/* Agregar ejercicio desde EDIT */
 const btnAgregarDesdeEditar = document.querySelector("#btn-agregar-ejercicio");
 if (btnAgregarDesdeEditar) {
     btnAgregarDesdeEditar.onclick = () => {
     modalEjercicios.dataset.rutinaid = rutinaActualId;
 
-    // Obtener grupos seleccionados al editar (este era el fallo)
     const gruposSeleccionados = Array.from(document.querySelectorAll("#grupo-editar input:checked"))
                                     .map(c => c.value);
 
-    // Si no hay grupos seleccionados, usamos los originales
     const r = readRutinas().find(x => x.id === rutinaActualId);
     const grupos = gruposSeleccionados.length > 0 ? gruposSeleccionados : r.grupo;
 
-    cargarEjerciciosGrupos(grupos); // ahora sí funciona con grupos nuevos
+    cargarEjerciciosGrupos(grupos); 
     modalEjercicios.classList.remove("hidden");
 };
 }
 
-/* Guardar cambios del modal editar (incluye grupos seleccionados en grupo-editar) */
+/* Guardar cambios del modal editar */
 document.querySelector("#btn-guardar-cambios").onclick = () => {
     const id = modalEditar.dataset.id;
     const arr = readRutinas();
@@ -721,7 +700,7 @@ document.querySelector("#btn-guardar-cambios").onclick = () => {
     rutina.nombre = document.querySelector("#edit-nombre").value.trim();
     rutina.dia = document.querySelector("#edit-dia").value;
 
-    // leer checkboxes de edit
+    /* leer checkboxes de edit */
     const gruposEditChecked = Array.from(document.querySelectorAll("#grupo-editar input:checked")).map(c => c.value);
     rutina.grupo = gruposEditChecked;
 
@@ -735,7 +714,7 @@ document.querySelector("#btn-guardar-cambios").onclick = () => {
 /* Render inicial */
 if (document.querySelector("#lista-rutinas")) renderRutinas();
 
-/* BOTÓN GUARDAR EJERCICIO EN MODAL DETALLES */
+/* Guardar ejercicio */
 document.getElementById("guardar-ejercicio").onclick = () => {
     if (!ejercicioTemp || !rutinaActualId) return mostrarAlerta("Error inesperado.");
 
@@ -759,7 +738,6 @@ document.getElementById("guardar-ejercicio").onclick = () => {
 
     saveRutinas(arr);
 
-    // limpiar inputs
     document.getElementById("input-series").value = "";
     document.getElementById("input-reps").value = "";
     document.getElementById("input-peso").value = "";
@@ -768,15 +746,15 @@ document.getElementById("guardar-ejercicio").onclick = () => {
     renderRutinas();
 };
 
-/* BOTÓN CANCELAR DEL MODAL DETALLES */
+/* Cancelar el modal de detalles */
 document.getElementById("cerrar-detalles").onclick = () => {
     document.getElementById("modal-detalles-ejercicio").classList.add("hidden");
 };
-/* ALERTA (componente) */
+/* Alerta */
 const alerta = document.getElementById("alerta");
 function mostrarAlerta(msg) {
     if (!alerta) {
-        window.alert(msg); // fallback
+        window.alert(msg); 
         return;
     }
     alerta.textContent = msg;
