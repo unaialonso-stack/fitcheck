@@ -116,7 +116,7 @@ nav ul li a:hover{
     text-align: center;
     padding: 120px 20px;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url(/img/barra2.png); 
+                url("../../img/barra2.png"); 
     background-size: cover;
     background-position: center;
     min-height: 30vh;
@@ -136,7 +136,7 @@ nav ul li a:hover{
     text-align: center;
     padding: 120px 20px;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url(/img/duo.png); 
+                url("../../img/duo.png"); 
     background-size: cover;
     background-position:  center;
     min-height: 30vh;
